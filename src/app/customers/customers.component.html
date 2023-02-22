@@ -1,0 +1,50 @@
+<div class="body_container">
+    <div class="container">
+        <h2>Hello Evano, </h2>
+        <div class="customers_container">
+            <div class="top_menu">
+                <div class="left_menu">
+                    <h3>All Customers</h3>
+                    <button class="sort_active" (click)="sortActive()" [ngClass]="{green_button: isActive}">
+                        Active Members
+                    </button>
+                </div>
+                <div class="search">
+                    <img src="/assets/search.svg" alt="search">
+                    <input type="text" name="input" id="input_area" placeholder="Search" (input)="returnSorted($event)">
+                </div>
+            </div>
+            <div class="list-group">
+                <div class="clients_table">
+                    <ul>
+                        <li class="table_names">
+                            <span>Customer Name</span>
+                            <span>Company</span>
+                            <span>Phone Number</span>
+                            <span>Email</span>
+                            <span>Country</span>
+                            <span class="status">Status</span>
+                        </li>
+                        <li class="table_data" *ngFor="let item of list |
+                         paginate: { itemsPerPage: 8, currentPage: p }">
+                            <span>{{item.name}}</span>
+                            <span>{{item.company}}</span>
+                            <span>{{item.phone}}</span>
+                            <span>{{item.email}}</span>
+                            <span>{{item.location}}</span>
+                            <span  [ngClass]="item.status">{{item.status}}</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="pagination_bar">
+                    <div>Showing data {{list.length < 1 ? 0 : 1}}  to {{list.length < 8 ? list.length : 8}} of  {{totalSize}} entries</div>
+                    <pagination-controls [previousLabel]="prev"
+                    [nextLabel]="next" (pageChange)="p = $event" class="my-pagination"></pagination-controls>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</div>

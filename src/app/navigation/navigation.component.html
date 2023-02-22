@@ -1,0 +1,29 @@
+<div id="sidenav_container">
+    <div #drawer id="sidenav">
+        <div class="logo_bar">
+            <img src="/assets/logo.svg" alt="logo" class="logo">
+            <div class="logo_div">
+                <span class="logo_large">Dashboard</span>
+                <span class="logo_small">v.01</span>
+            </div>
+        </div>
+        <div class="main_nav">
+            <ul>
+                <li *ngFor="let item of menuItems" class="menu_item" mat-list-item [routerLink]="item.name" routerLinkActive="menu_item_active" #dashboard="routerLinkActive">
+                    <a  class="menu_item_left_side">
+                        <img class="menu_img"  alt="item img" routerLinkActive="svg_active" [src]="dashboard.isActive ? item.activeimg : item.img" >
+                        <span class="hiden_span"> {{item.name | titlecase}}</span>
+                    </a>
+                    <img class="arrow" [src]="dashboard.isActive ? '/assets/right_arrow_active.svg' : '/assets/right_arrow.svg'" alt="arrow">
+                </li>
+            </ul>
+        </div>
+        <div class="user_menu">
+            <img src="/assets/user_photo.svg" alt="user photo">
+            <div class="data_user_menu">
+                <span class="user_menu_name">Evano</span>
+                <div class="user_menu_position">Project Manager</div>
+            </div>
+        </div>
+    </div>
+</div>
